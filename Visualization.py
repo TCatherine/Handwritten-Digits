@@ -48,7 +48,7 @@ def SearchImage(model, X, Y, N, prediction):
     Y=Y.tolist()
     for digit in digits:
         i=0
-        while y_pred.count!=0 and i<N:
+        while Y.count(digit)!=0 and i<N:
             ind = Y.index(digit)
             if (y_pred[ind] == Y[ind]) and prediction or (y_pred[ind] != Y[ind]) and not(prediction):
                 i+=1
