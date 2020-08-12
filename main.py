@@ -66,9 +66,9 @@ def train_loop(model, train_x, train_y, test_x, test_y, max_epochs=50):
         size_batch = 1024
         for fnum in range(0, len(dummies_train_y), size_batch):
             model.train(train_x[fnum:fnum + size_batch], dummies_train_y[fnum:fnum + size_batch])
-        print(time.time() - t)
+        elapsed = time.time() - t
         if epoch % 10 == 0:
-            print('\nEpoch %d' % (epoch))
+            print('\nEpoch %d, (%.2f sec per epoch)' % (epoch, elapsed))
             accuary(model, train_x, train_y, 'Train')
             accuary(model, test_x, test_y, 'Test')
     PlotConfusionMatrix(model, train_x, train_y, test_x, test_y)
