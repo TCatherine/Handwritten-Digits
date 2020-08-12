@@ -18,8 +18,7 @@ def convert(model, X):
 
 def ConMatrix(ax, model, X, Y, name):
     y_pred = convert(model, X)
-    cm = confusion_matrix(Y, y_pred)
-    cm = cm / len(Y)
+    cm = confusion_matrix(Y, y_pred, normalize='true')
     disp = ConfusionMatrixDisplay(cm, display_labels=digits)
     disp.plot(ax=ax, cmap='Blues', values_format='.1f')
     plt.sca(ax)
